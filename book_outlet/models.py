@@ -13,13 +13,14 @@ class Book(models.Model):
     author = models.CharField(null=True, max_length=100)
     is_bestselling = models.BooleanField(default=False)
     # convert url "3" to "harry-ptter-1", add db_index for search performace (you may set this it pk also)
+    # options blank=True, editable=False,
     slug = models.SlugField(default="", null=False, db_index=True)
     # id = models.AutoField() will be automatically added
 
-    # For save a slug based on the title
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+    # For save a slug based on the title (not needed if you chse pre populated value in admin)
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super().save(*args, **kwargs)
 
     # For simler url call in template(by Jocc):
     def get_absolute_url(self):

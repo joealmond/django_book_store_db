@@ -19,6 +19,6 @@ from django.urls import path, include
 import book_outlet
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path("", include("book_outlet.urls"))
 ]
